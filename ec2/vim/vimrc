@@ -41,14 +41,6 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 " Auto line wrap for paper writing.
 "set tw=100
 
-" NERDTree
-autocmd BufEnter * NERDTreeMirror
-
-"CTRL-z to toggle sidebar view with CTRL-z
-nmap <silent> <C-z> :NERDTreeToggle<CR>
-"Set F2 to put the cursor to the nerdtree
-nmap <silent> <F2> :NERDTreeFind<CR>
-
 " CTRL-b to make in current directory
 nmap <C-B> :!make<CR>
 
@@ -56,6 +48,6 @@ nmap <C-B> :!make<CR>
 
 """ Rust
 set hidden
-let g:ycm_rust_src_path = "/Users/shoumikpalkar/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/"
+let g:ycm_rust_src_path = "/home/ubuntu/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/"
 
 au FileType rust nmap gs <Plug>(rust-def-split)

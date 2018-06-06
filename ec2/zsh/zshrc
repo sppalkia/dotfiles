@@ -1,22 +1,22 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.cargo/bin:$PATH
+export WELD_HOME=$HOME/weld
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/shoumikpalkar/.oh-my-zsh
-
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
-
-export DYLD_LIBRARY_PATH=$HOME/work/weld/target/release:$HOME/work/weld/target/debug
-
-source /opt/intel/mkl/bin/mklvars.sh intel64
-
-alias tmux="TERM=screen-256color-bce tmux"
-alias vi="vim"
+export ZSH=/home/ubuntu/.oh-my-zsh
+source /opt/intel/bin/compilervars.sh intel64
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -60,7 +60,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
