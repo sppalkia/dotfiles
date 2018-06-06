@@ -1,6 +1,8 @@
 # Source this file to use it!
 # 
 # source launch-script.sh
+#
+# This script is specifically for Ubuntu 16.04 (Xenial).
 
 # Basics
 sudo apt-get install git gcc g++ wget curl htop cmake python-dev python3-dev mosh
