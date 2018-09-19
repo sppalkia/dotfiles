@@ -28,15 +28,26 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vi
 
 # Vim Packages
 cd ~/.vim/bundle
-git clone https://github.com/rust-lang/rust.vim.git
-git clone https://github.com/Valloric/YouCompleteMe
 
+# Rust
+git clone https://github.com/rust-lang/rust.vim.git
+
+# YouCompleteMe
+git clone https://github.com/Valloric/YouCompleteMe
 cd ~/.vim/bundle/YouCompleteMe
 git submodule update --init --recursive
 ./install.py --rust-completer
 
+# Solarized
 cd ~/.vim/bundle
 git clone git://github.com/altercation/vim-colors-solarized.git
+
+# Ctrl+P Search
+cd ~/.vim
+git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
+
+# NERD Tree
+git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 
 # Install vimrc
 https://raw.githubusercontent.com/sppalkia/dotfiles/master/ec2/vim/vimrc -O ~/.vimrc

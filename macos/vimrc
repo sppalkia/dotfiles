@@ -27,6 +27,9 @@ set clipboard=unnamed
 " Fix backspace
 set backspace=indent,eol,start
 
+" Ignore build files from Rust.
+set wildignore+=*/target/debug/*,*/target/release/*,*/target/doc/*,*.class,*.jar
+
 "set colorcolumn=100
 
 filetype plugin indent on

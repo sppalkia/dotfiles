@@ -23,6 +23,12 @@ set nocompatible
 
 set clipboard=unnamed
 
+" Ignore build files from Rust.
+set wildignore+=*/target/debug/*,*/target/release/*,*/target/doc/*,*.class,*.jar
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 " Fix backspace
 set backspace=indent,eol,start
 
@@ -38,16 +44,31 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Clear highlighting on Ctrl+L
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
+" NERDTree
+autocmd BufEnter * NERDTreeMirror
+
+"CTRL-z to toggle sidebar view with CTRL-z
+nmap <silent> <C-z> :NERDTreeToggle<CR>
+"Set F2 to put the cursor to the nerdtree
+nmap <silent> <F2> :NERDTreeFind<CR>
+
 " Auto line wrap for paper writing.
 "set tw=100
 
 " CTRL-b to make in current directory
 nmap <C-B> :!make<CR>
 
+fun! Clean()
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+command! Clean call Clean()
+
 """"" LANGUAGE SPECIFIC
 
 """ Rust
 set hidden
-let g:ycm_rust_src_path = "/home/ubuntu/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/"
+let g:ycm_rust_src_path=$RUST_SRC_PATH
 
 au FileType rust nmap gs <Plug>(rust-def-split)
