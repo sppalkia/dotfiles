@@ -50,7 +50,7 @@ git clone https://github.com/kien/ctrlp.vim.git bundle/ctrlp.vim
 git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 
 # Install vimrc
-https://raw.githubusercontent.com/sppalkia/dotfiles/master/ec2/vim/vimrc -O ~/.vimrc
+wget https://raw.githubusercontent.com/sppalkia/dotfiles/master/ec2/vim/vimrc -O ~/.vimrc
 
 # -------------------------------
 # tmux configuration
