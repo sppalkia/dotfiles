@@ -2,14 +2,14 @@
 # 
 # source launch-script.sh
 #
-# This script is specifically for Ubuntu 16.04 (Xenial).
+# This script is specifically for Ubuntu 18.04 (Bionic).
 
 # Basics
-sudo apt-get install git gcc g++ wget curl htop cmake python-dev python3-dev mosh
+sudo apt-get install build-essential zlib1g-dev git gcc g++ wget curl htop cmake python-dev python3-dev mosh
 
 # Install Clang/LLVM 6.0 for Weld
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
+sudo apt-add-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main"
 sudo apt-get update
 sudo apt-get install llvm-6.0-dev clang-6.0
 
