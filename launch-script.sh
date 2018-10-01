@@ -4,9 +4,10 @@
 #
 # This script is specifically for Ubuntu 18.04 (Bionic).
 
-# Basics
-sudo apt-get install build-essential zlib1g-dev git gcc g++ wget curl htop cmake python-dev python3-dev mosh
+sudo apt-get update
 
+# Basics
+sudo apt-get install build-essential zlib1g-dev git gcc g++ wget curl htop cmake python-dev python3-dev mosh 
 # Install Clang/LLVM 6.0 for Weld
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 sudo apt-add-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-6.0 main"
