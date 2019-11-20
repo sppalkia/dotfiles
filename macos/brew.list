@@ -1,0 +1,14 @@
+clang-format
+cloc
+coreutils
+ctags
+gnu-sed
+htop
+llvm@8
+mosh
+reattach-to-user-namespace
+ripgrep
+scala
+tmux
+vim
+wget

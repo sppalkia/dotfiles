@@ -1,70 +1,79 @@
-execute pathogen#infect()
 
-" Color
-syntax on
-colorscheme solarized
+" vim-plug plugins
+call plug#begin('~/.vim/plugged')
 
-set background=dark
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'tpope/vim-surround'
+Plug 'derekwyatt/vim-scala'
+Plug 'tpope/vim-fugitive'
+Plug 'majutsushi/tagbar'
+Plug 'rust-lang/rust.vim'
+Plug 'altercation/vim-colors-solarized'
 
-set mouse=a
+call plug#end()
 
-" Display
-set nu
-set ls=2
+" Plugin config
 
-" Tabs
-set ts=2
-set sw=2
-set sts=2
-set expandtab
+let g:formatter_yapf_style = 'pep8'
+let g:airline_powerline_fonts = 1
 
-" Etc.
-set hlsearch
-set nocompatible
-
-set clipboard=unnamed
-
-" Fix backspace
-set backspace=indent,eol,start
-
-" Ignore build files from Rust.
-set wildignore+=*/target/debug/*,*/target/release/*,*/target/doc/*,*.class,*.jar
-
-"set colorcolumn=100
-
-filetype plugin indent on
-
-" Highlight redundant spaces
-autocmd ColorScheme * RedundantSpaces ctermbg=red
-" Hightlighting and spell check for git-commit
-" autocmd Filetype gitcommit setlocal spell textwidth=72
-
-" Clear highlighting on Ctrl+L
+map <C-z> :NERDTreeToggle<CR>
+nmap <leader>t :TagbarToggle<CR>
+" CTRL-p for file search
+nmap <C-p> :FZF<CR>
+" CTRL-l to clear highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-
-" Auto line wrap for paper writing.
-"set tw=100
-
-" NERDTree
-autocmd BufEnter * NERDTreeMirror
-
-"CTRL-z to toggle sidebar view with CTRL-z
-nmap <silent> <C-z> :NERDTreeToggle<CR>
-"Set F2 to put the cursor to the nerdtree
-nmap <silent> <F2> :NERDTreeFind<CR>
-
 " CTRL-b to make in current directory
 nmap <C-B> :!make<CR>
 
-nnoremap <Leader>] :YcmCompleter GoTo<CR>
+" Other
 
-""""" LANGUAGE SPECIFIC
+set ls=2
+set tags=~/tags
+let mapleader = ','
+set encoding=utf-8
+set nu
+set binary
+set term=xterm-256color
+colorscheme solarized
+set bg=dark
+set showcmd
+set foldenable
+set foldmethod=indent
+set foldlevelstart=99
+set autoindent
+set clipboard=unnamed
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set mouse=a
+syntax on
+set history=1000
+set undolevels=1000
+set backspace=indent,eol,start
+set ruler
+set showmatch
+set matchtime=3
+set wildmenu
+set wildmode=list:longest,full
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.a,*.o,*.aux,*.out
+set showbreak=>
+set hlsearch
+set ignorecase
+set smartcase
+set hidden
+set switchbuf=useopen
+set scrolljump=5
+set scrolloff=3
 
-fun! Clean()
-    let l:save = winsaveview()
-    %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-command! Clean call Clean()
+" Navigate between words (+ whitespace) using Tab and Back-slash
+nnoremap <Tab> W
+vnoremap <Tab> W
+nnoremap \ B
+vnoremap \ B
 
-let g:ycm_rust_src_path=$RUST_SRC_PATH
+" Check spelling in text, LaTeX, and Markdown files.
+autocmd BufReadPre *.txt setlocal spell
+autocmd BufReadPre *.tex setlocal spell
+autocmd BufReadPre *.md setlocal spell
