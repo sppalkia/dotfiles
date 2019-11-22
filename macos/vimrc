@@ -57,7 +57,7 @@ set showmatch
 set matchtime=3
 set wildmenu
 set wildmode=list:longest,full
-set wildignore=*.swp,*.bak,*.pyc,*.class,*.a,*.o,*.aux,*.out
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.a,*.o,*.aux,*.out,*.bin,*.jar
 set showbreak=>
 set hlsearch
 set ignorecase
