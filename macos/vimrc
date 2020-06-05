@@ -24,7 +24,7 @@ nmap <leader>t :TagbarToggle<CR>
 nmap <C-p> :FZF<CR>
 " CTRL-l to clear highlighting
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-" CTRL-b to make in current directory
+" CTRL-b to `make` in current directory
 nmap <C-B> :!make<CR>
 
 " Other
@@ -50,6 +50,8 @@ set expandtab
 set mouse=a
 syntax on
 set history=1000
+set colorcolumn=100
+set textwidth=100
 set undolevels=1000
 set backspace=indent,eol,start
 set ruler
@@ -73,7 +75,13 @@ vnoremap <Tab> W
 nnoremap \ B
 vnoremap \ B
 
+" Autowrapping for function-level comments.
+autocmd Filetype c,cpp,cc set comments^=:///
+
 " Check spelling in text, LaTeX, and Markdown files.
 autocmd BufReadPre *.txt setlocal spell
 autocmd BufReadPre *.tex setlocal spell
 autocmd BufReadPre *.md setlocal spell
+
+" Trim trailing whitespace on write.
+autocmd BufWritePre * %s/\s\+$//e
