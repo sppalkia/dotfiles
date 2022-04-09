@@ -1,3 +1,7 @@
+"
+" Shoumik's .vimrc file
+" Last Modified: 6/14/2020
+"
 
 " vim-plug plugins
 call plug#begin('~/.vim/plugged')
@@ -10,28 +14,46 @@ Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 Plug 'rust-lang/rust.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
-" Plugin config
+" Set Leader to ','
+let mapleader = ','
 
-let g:formatter_yapf_style = 'pep8'
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+
+" Custom Mappings
+map <C-z> :NERDTreeToggle<CR>
+nmap <C-p> :FZF<CR>
+" Clear highlighting
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+nmap <C-B> :!make<CR>
+nmap <silent> <Leader>t :TagbarToggle<CR>
+nmap <silent> <Leader>of :FSHere<cr>
+nmap <silent> <Leader>sf :FSSplitRight<cr>
+
+" Powerline status bar
 let g:airline_powerline_fonts = 1
 
-map <C-z> :NERDTreeToggle<CR>
-nmap <leader>t :TagbarToggle<CR>
-" CTRL-p for file search
-nmap <C-p> :FZF<CR>
-" CTRL-l to clear highlighting
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-" CTRL-b to `make` in current directory
-nmap <C-B> :!make<CR>
+" FSSwitch Setup
+au! BufEnter *c,*.cc,*cpp let b:fswitchdst = 'h,hh'
+au! BufEnter *.h let b:fswitchdst = 'cc,c,cpp'
+let fsnonewfiles=0
+
+" C++ Highlighting
+let g:cpp_no_function_highlight = 1
+let g:cpp_posix_standard = 1
 
 " Other
-
+syntax on
+set tags=tags
 set ls=2
-set tags=~/tags
-let mapleader = ','
+set wildmode=longest,list,full
+set wildmenu
 set encoding=utf-8
 set nu
 set binary
@@ -48,7 +70,6 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set mouse=a
-syntax on
 set history=1000
 set colorcolumn=100
 set textwidth=100
@@ -76,7 +97,7 @@ nnoremap \ B
 vnoremap \ B
 
 " Autowrapping for function-level comments.
-autocmd Filetype c,cpp,cc set comments^=:///
+autocmd Filetype c,cpp,cc,h,hh set comments^=:///
 
 " Check spelling in text, LaTeX, and Markdown files.
 autocmd BufReadPre *.txt setlocal spell
